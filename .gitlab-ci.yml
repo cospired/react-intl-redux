@@ -1,0 +1,38 @@
+stages:
+  - setup
+  - test
+  - publish
+
+setup:
+  image: node:8
+  stage: setup
+  script:
+    - npm install
+  artifacts:
+    expire_in: 30 min
+    paths:
+    - node_modules
+  tags:
+    - amd64
+
+lint:
+  image: node:8
+  stage: test
+  script:
+    - npm install
+    - npm run lint
+  tags:
+    - amd64
+
+npmpublish:
+  image: node:8
+  stage: publish
+  script:
+    - npm install
+    - npm install -g npm-cli-login
+    - npm-cli-login -u ${NPM_USER} -p ${NPM_PASS} -e ci@gitlab.io-labs.de -r https://npm.cospired.com -s @cospired --quotes
+    - npm publish
+  only:
+    - production
+  tags:
+    - amd64
