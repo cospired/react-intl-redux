@@ -1,0 +1,49 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "hapi"
+  ],
+  "rules": {
+    "comma-dangle": ["warn", "never"],
+    "hapi/hapi-scope-start": "warn",
+    "import/first": 0,
+    "import/newline-after-import": "error",
+    "import/prefer-default-export": 1,
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "specialLink": [ "to" ]
+    }],
+    "newline-before-return": "warn",
+    "no-unused-vars": [ "warn", {
+      "args": "all",
+      "argsIgnorePattern": "^_",
+      "vars": "all"
+    }],
+    "padded-blocks": 0,
+    "react/jsx-curly-spacing": ["error", "always"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "space-in-parens": 0,
+    "spaced-comment": ["error", "always", {
+      "line": {
+        "markers": ["/"],
+        "exceptions": ["-", "+"]
+      },
+      "block": {
+        "markers": ["!"],
+        "exceptions": ["*"],
+        "balanced": true
+      }
+    }]
+  }
+}
